@@ -38,7 +38,7 @@ EMOJI_WAVE="👋"
 
 # Function to display the help/usage message
 usage() {
-    echo -e "${C_WHITE}🚇 Tunnelsmith - a friendly SSH tunnel manager${C_RESET}"
+    echo -e "${C_WHITE}🚇 Tunnelsmith - a friendly tunnel manager${C_RESET}"
     echo -e "---------------------------------------------------"
     echo -e "${C_YELLOW}Usage:${C_RESET} ${C_CYAN}$0 ${C_PURPLE}<command> [options]${C_RESET}\n"
     echo -e "${C_PURPLE}Commands:${C_RESET}"
