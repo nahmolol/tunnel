@@ -78,9 +78,10 @@ case "$1" in
         echo -e "${EMOJI_LINK} ${C_CYAN}Forwarding:${C_RESET} Local Port ${C_WHITE}${LOCAL_PORT}${C_RESET} -> ${C_WHITE}${REMOTE_HOST}:${REMOTE_PORT}${C_RESET}\n"
 
         # The magic command. It runs in the background and won't die when you close the terminal.
+        # -o StrictHostKeyChecking=no: Automatically adds the host key to known_hosts to prevent prompts.
         # -o ExitOnForwardFailure=yes: Fails if the remote port is already in use (good for feedback!)
         # -o ServerAliveInterval=60: Keeps the connection from timing out.
-        nohup ssh -o ExitOnForwardFailure=yes -o ServerAliveInterval=60 \
+        nohup ssh -o StrictHostKeyChecking=no -o ExitOnForwardFailure=yes -o ServerAliveInterval=60 \
             -N -R ${REMOTE_PORT}:localhost:${LOCAL_PORT} \
             ${REMOTE_USER}@${REMOTE_HOST} -p ${SSH_PORT} &> /tmp/tunnel_${REMOTE_PORT}.log &
 
@@ -95,7 +96,7 @@ case "$1" in
             echo -e "  ${C_WHITE}PID:${C_RESET} ${C_YELLOW}${PID}${C_RESET}"
             echo -e "  ${C_WHITE}URL:${C_RESET} ${C_CYAN}http://${REMOTE_HOST}:${REMOTE_PORT}${C_RESET} (if forwarding a web server)"
             echo -e "  ${C_WHITE}Log:${C_RESET} /tmp/tunnel_${REMOTE_PORT}.log"
-            echo -e "\n${EMOJI_STOP} To stop this tunnel, run: ${C_PURPLE} tunnel kill ${PID}${C_RESET}\n"
+            echo -e "\n${EMOJI_STOP} To stop this tunnel, run: ${C_PURPLE}tunnel kill ${PID}${C_RESET}\n"
         else
             echo -e "${EMOJI_ERROR} ${C_RED}Oh no! The tunnel failed to start.${C_RESET}"
             echo -e "  This could be due to a password failure, a taken port, or a connection issue."
@@ -164,6 +165,10 @@ case "$1" in
         else
             echo -e "${EMOJI_SPARKLE} ${C_GREEN}No active tunnels to kill.${C_RESET}\n"
         fi
+        ;;
+
+    help)
+        usage
         ;;
 
     *)
