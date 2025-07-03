@@ -95,7 +95,7 @@ case "$1" in
             echo -e "  ${C_WHITE}PID:${C_RESET} ${C_YELLOW}${PID}${C_RESET}"
             echo -e "  ${C_WHITE}URL:${C_RESET} ${C_CYAN}http://${REMOTE_HOST}:${REMOTE_PORT}${C_RESET} (if forwarding a web server)"
             echo -e "  ${C_WHITE}Log:${C_RESET} /tmp/tunnel_${REMOTE_PORT}.log"
-            echo -e "\n${EMOJI_STOP} To stop this tunnel, run: ${C_PURPLE}./tunnel kill ${PID}${C_RESET}\n"
+            echo -e "\n${EMOJI_STOP} To stop this tunnel, run: ${C_PURPLE} tunnel kill ${PID}${C_RESET}\n"
         else
             echo -e "${EMOJI_ERROR} ${C_RED}Oh no! The tunnel failed to start.${C_RESET}"
             echo -e "  This could be due to a password failure, a taken port, or a connection issue."
