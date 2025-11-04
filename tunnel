@@ -9,7 +9,7 @@
 
 # --- Configuration ---
 # You can change these values to match your remote server details.
-REMOTE_HOST="tunnel.voidhost.pro"
+REMOTE_HOST="tunnel.nahmo.pro"
 REMOTE_USER="root"
 SSH_PORT="65535"
 
